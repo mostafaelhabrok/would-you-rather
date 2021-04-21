@@ -15,6 +15,7 @@ class App extends Component {
         this.props.dispatch(handleInitialData())
       }
     render(){
+if(Object.keys(this.props.authedUser).includes("id")){
         return (
         <Router >
             <Nav />
@@ -27,5 +28,16 @@ class App extends Component {
             
         )
     }
+else {
+    return(
+    <Login />
+)
+    }
+    }
 }
-export default connect()(App)
+function mapStateToProps ({ authedUser }) {
+    return {
+        authedUser
+    }
+  }
+export default connect(mapStateToProps)(App)

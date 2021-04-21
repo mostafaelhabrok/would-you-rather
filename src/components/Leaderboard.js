@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,Fragment } from 'react'
 import { connect } from 'react-redux'
 
 class Leaderboard extends Component{
@@ -10,6 +10,7 @@ const IDs = Object.keys(this.props.u)
                 )
 
       return(
+        <Fragment>
             <div>
               <h3>Leaderboard</h3>
               <ul>
@@ -40,6 +41,7 @@ const IDs = Object.keys(this.props.u)
                 }
               </ul>
             </div>
+            </Fragment>
         )
     }
 }

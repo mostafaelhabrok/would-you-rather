@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component,Fragment } from 'react'
 import { connect } from 'react-redux'
 import {handleAddAnswer} from "../actions/questions"
-import {  Redirect } from 'react-router-dom'
 
 class Question extends Component {
     state={
@@ -19,9 +18,7 @@ class Question extends Component {
 
     }
     render(){
-        if (!Object.keys(this.props.authedUser).includes("id")) {
-            alert("Please Login first")
-            return (<Redirect to="/login"/>)}
+        
         const {id ,questions,users,authedUser} = this.props
         const author = this.props.questions[id].author
         const name = users[author].name
@@ -32,8 +29,10 @@ class Question extends Component {
         if(voteOne){one = "mark"}
         if(voteTwo){two = "mark"}
 
+
         if(!(voteOne || voteTwo)){
             return(
+                <Fragment>
             <div className="center">
             <span>Asked By</span><strong>{" "+ name}</strong>
             <br></br>
@@ -50,15 +49,19 @@ class Question extends Component {
             <br></br>
             <button disabled={this.state.enable} onClick={this.saveAnswer}>Submit</button>
             </div>
+            </Fragment>
         )}
 
         if(!Object.keys(questions).includes(id)){
             return(
+                <Fragment>
             <div>
                 <h3 className="center">404 not found</h3>
             </div>
+            </Fragment>
         )}
         return(
+            <Fragment>
             <div className="center">
                 <span>Asked By</span><strong>{" "+ name}</strong>
                 <br></br>
@@ -87,7 +90,12 @@ class Question extends Component {
                 {"  %  of Votes"}
                 </div>
             </div>
+            </Fragment>
+
         )
+
+
+                
     }
 }
 

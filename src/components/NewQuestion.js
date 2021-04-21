@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component , Fragment} from 'react'
 import { connect } from 'react-redux'
 import {handleAddQuestion} from "../actions/questions"
 import { Redirect } from 'react-router-dom'
@@ -27,6 +27,7 @@ class NewQuestion extends Component {
         if(this.state.toHome===true){return <Redirect to="/"/>}
         
         return(
+            <Fragment>
             <div>
                 <form className="center" onSubmit={this.handleSubmit}>
                 <h2>Create New Question</h2>
@@ -42,6 +43,7 @@ class NewQuestion extends Component {
 
                 </form>
             </div>
+            </Fragment>
         )
     }
 }
