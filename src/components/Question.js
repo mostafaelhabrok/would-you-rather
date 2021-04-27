@@ -18,8 +18,17 @@ class Question extends Component {
 
     }
     render(){
-        
         const {id ,questions,users,authedUser} = this.props
+
+        if(!Object.keys(questions).includes(id)){
+            return(
+                <Fragment>
+            <div>
+                <h2 className="center">404: Question Not Found</h2>
+            </div>
+            </Fragment>
+        )}
+        
         const author = this.props.questions[id].author
         const name = users[author].name
         let one = ""
@@ -52,14 +61,7 @@ class Question extends Component {
             </Fragment>
         )}
 
-        if(!Object.keys(questions).includes(id)){
-            return(
-                <Fragment>
-            <div>
-                <h3 className="center">404 not found</h3>
-            </div>
-            </Fragment>
-        )}
+
         return(
             <Fragment>
             <div className="center">
